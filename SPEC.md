@@ -199,9 +199,10 @@ If adopted, register with IANA:
 
 ## 9. Examples
 
-### 9.1 Minimal
+### 9.1 Minimal (BONK)
 
 ```
+# bonkcoin.com/solana.txt
 mint: DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263
 ```
 
