@@ -29,16 +29,16 @@ That's it.
 
 ## Example
 
-**bonk.com/solana.txt:**
+**bonkcoin.com/solana.txt:**
 ```
 # Official BONK token
 mint: DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263
 ```
 
 **Verification flow:**
-1. Wallet sees a BONK token with metadata pointing to bonk.com
-2. Wallet fetches `bonk.com/solana.txt`
-3. Mint address matches → ✅ "Verified by bonk.com"
+1. Wallet sees a BONK token with metadata pointing to bonkcoin.com
+2. Wallet fetches `bonkcoin.com/solana.txt`
+3. Mint address matches → ✅ "Verified by bonkcoin.com"
 
 ## Specification
 
