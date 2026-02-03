@@ -1,0 +1,7 @@
+# Jupiter Aggregator
+
+program: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4
+mint: JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN
+wallet: JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN
+actions: https://jup.ag/api/actions
+contact: security@jup.ag

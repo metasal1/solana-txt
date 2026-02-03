@@ -1,0 +1,6 @@
+# USDC - Circle
+# https://www.circle.com
+
+mint: EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
+wallet: 7VHUFJHWu2CuExkJcJrzhQPJ2oygupTWkL2A2For4BmE
+contact: security@circle.com
