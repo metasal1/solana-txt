@@ -1,0 +1,15 @@
+{
+  "name": "solana-txt",
+  "version": "0.1.0",
+  "description": "Verify domain/address associations via solana.txt (sRFC-35)",
+  "type": "module",
+  "bin": {
+    "solana-txt": "./index.mjs"
+  },
+  "keywords": ["solana", "verification", "dns", "sRFC-35", "token"],
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/metasal1/solana-txt"
+  }
+}

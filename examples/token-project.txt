@@ -1,6 +1,5 @@
-# USDC - Circle
-# https://www.circle.com
+# circle.com/.well-known/solana.txt
+# USDC on Solana
 
-mint: EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
-wallet: 7VHUFJHWu2CuExkJcJrzhQPJ2oygupTWkL2A2For4BmE
-contact: security@circle.com
+solana-mint-address=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
+solana-address=7VHUFJHWu2CuExkJcJrzhQPJ2oygupTWkL2A2For4BmE
