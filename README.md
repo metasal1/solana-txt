@@ -35,16 +35,19 @@ One association record per line, using tag=value pairs:
 # Token association
 solana-mint-address=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263
 
-# Program association
+# Program association  
 solana-program-address=JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4
 
-# General address
-solana-address=MTSLZDJppGh6xUcnrSSbSQE5fgbvCtQ496MqgQTv8c1
+# Wallet association (treasury, donations, etc.)
+solana-wallet-address=MTSLZDJppGh6xUcnrSSbSQE5fgbvCtQ496MqgQTv8c1
 
-# Deny association (fight scams)
+# Generic address (signer, deployer, authority)
+solana-address=Authority111111111111111111111111111111111
+
+# Deny association (fight scams impersonating your brand)
 solana-mint-address=FakeTokenMintAddress123 deny=1
 
-# Deny ALL associations
+# Deny ALL associations (if your domain is being impersonated)
 solana-address=denyall
 ```
 
@@ -53,8 +56,9 @@ solana-address=denyall
 | Tag | Purpose |
 |-----|---------|
 | `solana-mint-address` | Associate a token mint |
-| `solana-program-address` | Associate a program |
-| `solana-address` | Associate any address |
+| `solana-program-address` | Associate a deployed program (smart contract) |
+| `solana-wallet-address` | Associate a wallet (treasury, donations, payments) |
+| `solana-address` | Associate any other address (signer, deployer, authority) |
 
 ## Qualifiers
 
@@ -64,11 +68,43 @@ solana-address=denyall
 | `deny=1` | Explicitly deny association | |
 | `network=mainnet` | Specify network | mainnet |
 
-## Example: bonkcoin.com/.well-known/solana.txt
+## Examples
+
+### Minimal — Token only
 
 ```
-# Official BONK token
+# bonkcoin.com/.well-known/solana.txt
 solana-mint-address=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263
+```
+
+### Complete — Token + Program + Wallets
+
+```
+# jup.ag/.well-known/solana.txt
+
+# Official JUP token
+solana-mint-address=JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN
+
+# Jupiter Aggregator v6 program
+solana-program-address=JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4
+
+# Treasury wallet
+solana-wallet-address=BUDGETPjcJtNEpbwDeE1YVh5X8Z4vZKg7cHXhnXJp2d
+
+# Donations wallet
+solana-wallet-address=JupFeeLx5vVbFpSkJcBrE8VRsvnUKp5TBfG4xTPHsVu
+```
+
+### NFT Project
+
+```
+# madlads.com/.well-known/solana.txt
+
+# Mad Lads collection
+solana-mint-address=J1S9H3QjnRtBbbuD4HjPV6RpRhwuk4zKbxsnCHuTgh9w
+
+# Royalties wallet  
+solana-wallet-address=MLADsNjknqNvXe3GpTT3i6b4wTEm51r5hP4PVQGTHBD
 ```
 
 ## Alternative: DNS TXT Records
