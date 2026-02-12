@@ -1,0 +1,7 @@
+# example.com/.well-known/solana.txt
+# Deny a scam token impersonating our brand
+
+solana-mint-address=FakeScamTokenMintAddress123456789 deny=1
+
+# Our real token
+solana-mint-address=OurRealTokenMintAddress987654321

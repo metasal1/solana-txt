@@ -1,6 +1,0 @@
-# Mad Lads by Backpack
-
-collection: J1S9H3QjnRtBbbuD4HjPV6RpRhwuk4zKbxsnCHuTgh9w
-wallet: MLADsNjknqNvXe3GpTT3i6b4wTEm51r5hP4PVQGTHBD
-actions: https://madlads.com/api/actions
-contact: support@backpack.exchange

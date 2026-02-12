@@ -1,2 +1,2 @@
-# bonkcoin.com/solana.txt
-mint: DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263
+# bonkcoin.com/.well-known/solana.txt
+solana-mint-address=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263

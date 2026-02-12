@@ -1,17 +1,17 @@
 # solana.txt
 
-A simple standard for linking domains to Solana addresses.
+A simple standard for linking domains to Solana addresses — based on [sRFC-35](https://forum.solana.com/t/srfc-35-address-domain-association-specification/3155).
 
 ## The Problem
 
 - Scam tokens impersonate legitimate projects
 - No easy way to verify "is this the real token?"
 - Users get rugged by fake mints with similar names
-- Token metadata can claim any website
+- sRFC-35 exists but adoption is low
 
 ## The Solution
 
-A plain text file at `example.com/solana.txt` that declares:
+A plain text file at `example.com/.well-known/solana.txt` that declares:
 
 > "This domain officially owns mint address X"
 
@@ -19,75 +19,134 @@ Like `robots.txt` for Solana verification.
 
 ## Quick Start
 
-Create a file called `solana.txt` in your website root:
+Create `/.well-known/solana.txt` on your website:
 
 ```
-mint: YourTokenMintAddressHere123456789abcdef
+solana-mint-address=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
 ```
 
 That's it.
 
-## Example
+## Format (sRFC-35)
 
-**bonkcoin.com/solana.txt:**
+One association record per line, using tag=value pairs:
+
 ```
-# Official BONK token
-mint: DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263
+# Token association
+solana-mint-address=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263
+
+# Program association  
+solana-program-address=JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4
+
+# Wallet association (treasury, donations, etc.)
+solana-wallet-address=MTSLZDJppGh6xUcnrSSbSQE5fgbvCtQ496MqgQTv8c1
+
+# Generic address (signer, deployer, authority)
+solana-address=Authority111111111111111111111111111111111
+
+# Deny association (fight scams impersonating your brand)
+solana-mint-address=FakeTokenMintAddress123 deny=1
+
+# Deny ALL associations (if your domain is being impersonated)
+solana-address=denyall
 ```
 
-**Verification flow:**
-1. Wallet sees a BONK token with metadata pointing to bonkcoin.com
-2. Wallet fetches `bonkcoin.com/solana.txt`
-3. Mint address matches → ✅ "Verified by bonkcoin.com"
+## Tags
 
-## Specification
+| Tag | Purpose |
+|-----|---------|
+| `solana-mint-address` | Associate a token mint |
+| `solana-program-address` | Associate a deployed program (smart contract) |
+| `solana-wallet-address` | Associate a wallet (treasury, donations, payments) |
+| `solana-address` | Associate any other address (signer, deployer, authority) |
 
-See [SPEC.md](./SPEC.md) for the full technical specification.
+## Qualifiers
 
-## Directives
-
-| Directive | Purpose | Example |
+| Qualifier | Purpose | Default |
 |-----------|---------|---------|
-| `mint` | Token mint address | `mint: EPjFWdd...` |
-| `wallet` | Official wallet | `wallet: 5ZiE3v...` |
-| `collection` | NFT collection | `collection: J1S9H3...` |
-| `program` | On-chain program | `program: Tokenkeg...` |
-| `actions` | Solana Actions URL | `actions: https://...` |
-| `contact` | Security contact | `contact: security@...` |
+| `allow=1` | Explicitly allow association | Default if omitted |
+| `deny=1` | Explicitly deny association | |
+| `network=mainnet` | Specify network | mainnet |
 
-## Why Plain Text?
+## Examples
 
-- **Simple**: Create with notepad, no devs needed
-- **Readable**: Humans can verify at a glance
-- **Proven**: Same format as robots.txt (30 years old)
-- **Lightweight**: No parsing libraries required
+### Minimal — Token only
+
+```
+# bonkcoin.com/.well-known/solana.txt
+solana-mint-address=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263
+```
+
+### Complete — Token + Program + Wallets
+
+```
+# jup.ag/.well-known/solana.txt
+
+# Official JUP token
+solana-mint-address=JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN
+
+# Jupiter Aggregator v6 program
+solana-program-address=JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4
+
+# Treasury wallet
+solana-wallet-address=BUDGETPjcJtNEpbwDeE1YVh5X8Z4vZKg7cHXhnXJp2d
+
+# Donations wallet
+solana-wallet-address=JupFeeLx5vVbFpSkJcBrE8VRsvnUKp5TBfG4xTPHsVu
+```
+
+### NFT Project
+
+```
+# madlads.com/.well-known/solana.txt
+
+# Mad Lads collection
+solana-mint-address=J1S9H3QjnRtBbbuD4HjPV6RpRhwuk4zKbxsnCHuTgh9w
+
+# Royalties wallet  
+solana-wallet-address=MLADsNjknqNvXe3GpTT3i6b4wTEm51r5hP4PVQGTHBD
+```
+
+## Alternative: DNS TXT Records
+
+sRFC-35 also supports DNS TXT records (recommended for higher security):
+
+```
+TXT "solana-mint-address=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"
+```
+
+## Checker Tool
+
+Verify any domain's solana.txt:
+
+```bash
+npx solana-txt check bonkcoin.com
+```
+
+See [checker/](./checker/) for the tool.
 
 ## Adoption
 
 For this to work, we need:
 
-1. **Projects** → Add solana.txt to their domains
+1. **Projects** → Add solana.txt to their domains ← **you are here**
 2. **Wallets** → Fetch and display verification badges
 3. **Explorers** → Show "verified by domain" on token pages
 4. **DEXs** → Check solana.txt before listing tokens
 
-## FAQ
+## Who's using it?
 
-**Q: Why not JSON?**  
-A: Simplicity. One line of text is easier than a JSON schema.
+- [metasal.xyz](https://metasal.xyz/.well-known/solana.txt) ✓
 
-**Q: Where should I put the file?**  
-A: Root directory (`/solana.txt`) or `/.well-known/solana.txt`
+*Add your site via PR!*
 
-**Q: Can I list multiple tokens?**  
-A: Yes, one `mint:` line per token.
+## Specification
 
-**Q: What if someone hacks my domain?**  
-A: Same risk as any domain-based verification. Use good security practices.
+Full spec: [sRFC-35 on Solana Forums](https://forum.solana.com/t/srfc-35-address-domain-association-specification/3155)
 
 ## Contributing
 
-Open an issue or PR. This is a community standard.
+Open an issue or PR. Let's drive adoption.
 
 ## License
 

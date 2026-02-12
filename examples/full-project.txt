@@ -1,0 +1,18 @@
+# Example: Full Project with Token + Program + Wallets
+# Domain: example-defi.com/.well-known/solana.txt
+
+# Official token
+solana-mint-address=ExDeF1TokenMintAddressXXXXXXXXXXXXXXXXXXXXX
+
+# Deployed programs
+solana-program-address=ExDeFiSwapProgramXXXXXXXXXXXXXXXXXXXXXXXXXX
+solana-program-address=ExDeFiStakeProgramXXXXXXXXXXXXXXXXXXXXXXXXX
+
+# Treasury wallet
+solana-wallet-address=ExDeFiTreasuryWalletXXXXXXXXXXXXXXXXXXXXXXX
+
+# Donation/tip wallet
+solana-wallet-address=ExDeFiDonationsWalletXXXXXXXXXXXXXXXXXXXXXX
+
+# Program upgrade authority
+solana-address=ExDeFiUpgradeAuthorityXXXXXXXXXXXXXXXXXXXXXX

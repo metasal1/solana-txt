@@ -1,0 +1,2 @@
+# metasal.xyz/.well-known/solana.txt
+solana-address=MTSLZDJppGh6xUcnrSSbSQE5fgbvCtQ496MqgQTv8c1

@@ -1,7 +1,17 @@
+# jup.ag/.well-known/solana.txt
 # Jupiter Aggregator
 
-program: JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4
-mint: JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN
-wallet: JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN
-actions: https://jup.ag/api/actions
-contact: security@jup.ag
+# JUP token
+solana-mint-address=JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN
+
+# Jupiter Aggregator v6 program
+solana-program-address=JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4
+
+# Jupiter Limit Order program
+solana-program-address=jupoNjAxXgZ4rjzxzPMP4oxduvQsQtZzyknqvzYNrNu
+
+# Jupiter DCA program  
+solana-program-address=DCA265Vj8a9CEuX1eb1LWRnDT7uK6q1xMipnNyatn23M
+
+# Treasury/fee wallet
+solana-wallet-address=JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN
